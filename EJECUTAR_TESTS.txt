@@ -1,0 +1,49 @@
+# GUÍA RÁPIDA DE EJECUCIÓN
+# ========================
+
+# 1. ACTIVAR EL ENTORNO VIRTUAL (si no está activado)
+# En Windows PowerShell:
+.venv\Scripts\Activate.ps1
+
+# En Windows CMD:
+.venv\Scripts\activate.bat
+
+# 2. INSTALAR DEPENDENCIAS (primera vez)
+pip install -r requirements.txt
+
+# 3. EJECUTAR TODAS LAS PRUEBAS
+pytest
+
+# 4. EJECUTAR CON MODO VERBOSE
+pytest -v
+
+# 5. EJECUTAR PRUEBAS ESPECÍFICAS
+
+# Pruebas de Unidad
+pytest tests/test_calculadora.py -v
+
+# Pruebas de Integración  
+pytest tests/test_inventario_integracion.py -v
+
+# Pruebas de Caja Blanca
+pytest tests/test_procesamiento_caja_blanca.py -v
+
+# Pruebas de Caja Negra
+pytest tests/test_formularios_caja_negra.py -v
+
+# Pruebas OO
+pytest tests/test_biblioteca_oo.py -v
+
+# Pruebas WebApp
+pytest tests/test_api_tareas_webapp.py -v
+
+# 6. GENERAR REPORTE DE COBERTURA
+pytest --cov=src --cov-report=html --cov-report=term
+
+# El reporte HTML se genera en: htmlcov/index.html
+
+# 7. EJECUTAR UN TEST ESPECÍFICO
+pytest tests/test_calculadora.py::TestOperacionesBasicas::test_sumar_numeros_positivos -v
+
+# 8. GENERAR REPORTE HTML DE TESTS
+pytest --html=report.html --self-contained-html
